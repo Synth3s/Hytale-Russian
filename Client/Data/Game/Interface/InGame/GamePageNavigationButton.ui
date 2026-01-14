@@ -1,0 +1,24 @@
+$Common = "../Common.ui";
+
+@DefaultLabelStyle = (HorizontalAlignment: Center, VerticalAlignment: Center, FontName: "Default", RenderBold: true, FontSize: 17, TextColor: #7c8b99, RenderUppercase: true); // FontName: "Secondary", // Changed to "Default" for Russian localization
+@HoveredLabelStyle = (...@DefaultLabelStyle, TextColor: #bbcedf);
+@PressedLabelStyle = (...@DefaultLabelStyle, TextColor: #ffffff);
+@SelectedLabelStyle = (...@DefaultLabelStyle, TextColor: #ffffff);
+@DisabledLabelStyle = (...@DefaultLabelStyle, TextColor: #7c8b99(0.4));
+@SelectedLabelMask = "../MainMenu/TopBar/SelectedLabelGradient.png";
+
+@TooltipStyle = $Common.@ButtonTextTooltipStyle;
+
+Group {
+  Padding: (Horizontal: 23);
+  LayoutMode: Left;
+
+  Label #ButtonLabel {
+    Style: @DefaultLabelStyle;
+  }
+
+  ActionButton #InputBinding {
+    Anchor: (Left: 10);
+    Disabled: true;
+  }
+}

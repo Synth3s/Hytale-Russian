@@ -1,0 +1,23 @@
+$Common = "../../Common.ui";
+
+@Width = 702;
+@Height = 222;
+
+Group #Container {
+  Anchor: (Width: @Width, Height: @Height, Top: 200 - (@Height / 2));
+  Background: "MajorBackground.png";
+
+  Group #EventTitle {
+    LayoutMode: Middle;
+
+    Label #SecondaryTitle {
+      Style: (RenderUppercase: true, RenderBold: true, FontSize: 12, TextColor: #c5cdd9, HorizontalAlignment: Center);
+    }
+
+    Label #PrimaryTitle {
+      Anchor: (Top: 7);
+      Style: (FontName: "Default", RenderBold: true, FontSize: 26, TextColor: #ffffff, HorizontalAlignment: Center); // FontName: "Secondary", // Changed to "Default" for Russian localization
+      MaskTexturePath: "../../../Common/TextGradient.png";
+    }
+  }
+}

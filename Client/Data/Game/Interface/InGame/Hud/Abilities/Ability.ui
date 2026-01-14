@@ -1,0 +1,81 @@
+$InputBinding = "InputBinding.ui";
+
+@Background = PatchStyle(TexturePath: "Assets/BackgroundAbility.png");
+@BackgroundOnUse = PatchStyle(TexturePath: "Assets/BackgroundAbilityOnUse.png");
+
+Group #Root {
+  Anchor: (Width: 58, Height: 58, Left: 0, Top: 0);
+  Background: @Background;
+
+  Group {
+    LayoutMode: Middle;
+
+    Group #IconSwordChargeUpAttack {
+      LayoutMode: Middle;
+      Anchor: (Width: 36, Height: 36);
+      Background: (TexturePath: "Assets/Icons/SwordChargeUpAttack.png", Color: #ffffff);
+      Visible: false;
+    }
+
+    Group #IconShieldAbility {
+      LayoutMode: Middle;
+      Anchor: (Width: 26, Height: 40);
+      Background: (TexturePath: "Assets/Icons/ShieldAbility.png", Color: #ffffff);
+      Visible: false;
+    }
+  }
+
+  Group #AbilityChargesContainer {
+    Anchor: (Top: 75);
+    LayoutMode: CenterMiddle;
+  }
+
+  Group {
+    LayoutMode: Center;
+    Anchor: (
+      Bottom: -37,
+      Height: 21
+    );
+
+    ActionButton #InputBinding {
+      Disabled: true;
+    }
+  }
+
+  Group {
+    Group #ErrorOverlay {
+      Background: PatchStyle(TexturePath: "Assets/OverlayAbilityErrorState.png", Color: #ffffff);
+      Anchor: (Width: 58, Height: 58);
+    }
+  }
+
+  ProgressBar #Cooldown {
+    Anchor: (Width: 50, Height: 50);
+    BarTexturePath: "Assets/FillAbilityCooldown.png";
+    EffectTexturePath: "Assets/LineAbilityCooldown.png";
+    EffectWidth: 50;
+    EffectHeight: 1;
+    Value: 0;
+    Direction: Start;
+    Alignment: Vertical;
+  }
+
+  Group #CooldownTimerContainer {
+    Label #ShadowCooldownTimer {
+      Padding: (Top: 10);
+      Style: (RenderBold: true, Alignment: Center, TextColor: #000000(0.80), FontName: "Default", FontSize: 24); // FontName: "Secondary", // Changed to "Default" for Russian localization
+    }
+
+    Label #CooldownTimer {
+      Padding: (Top: 6);
+      Style: (RenderBold: true, Alignment: Center, TextColor: #ffffe6, FontName: "Default", FontSize: 24); // FontName: "Secondary", // Changed to "Default" for Russian localization
+    }
+  }
+
+  CircularProgressBar #ChargeProgressBar {
+    Color: #e4b456;
+    Anchor: (Width: 124, Height: 124, Left: -32, Top: -32);
+    MaskTexturePath: "Assets/FrameAbilityOnUseState.png";
+    Value: 0;
+  }
+}

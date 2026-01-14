@@ -1,0 +1,41 @@
+@IconSize = 24;
+
+
+@Container = Group {
+  @LabelPosition = -40;
+  @MouseIconPosition = -40;
+
+  Group #MouseLeft {
+    LayoutMode: Middle;
+    Anchor: (Width: @IconSize, Height: @IconSize, Bottom: @MouseIconPosition);
+    Background: "Assets/Icons/IconLeftClick.png";
+    Visible: false;
+  }
+
+  Group #MouseRight {
+    LayoutMode: Middle;
+    Anchor: (Width: @IconSize, Height: @IconSize, Bottom: @MouseIconPosition);
+    Background: "Assets/Icons/IconRightClick.png";
+    Visible: false;
+  }
+
+  Group #MouseMiddle {
+    LayoutMode: Middle;
+    Anchor: (Width: @IconSize, Height: @IconSize, Bottom: @MouseIconPosition);
+    Background: "Assets/Icons/IconMiddleClick.png";
+    Visible: false;
+  }
+
+  Group {
+    Anchor: (Height: @IconSize, Bottom: @LabelPosition);
+    LayoutMode: Center;
+
+    Label #InputBinding {
+      Background: (TexturePath: "../../Pages/Inventory/SlotInputBindingBackground.png", Border: 6);
+      Anchor: (MinWidth: 32);
+      Padding: (Top: 1, Horizontal: 4);
+      Style: (RenderBold: true, Alignment: Center, TextColor: #ffffe6, FontName: "Default", FontSize: 12, Wrap: true); // FontName: "Secondary", // Changed to "Default" for Russian localization
+      Visible: false;
+    }
+  }
+};

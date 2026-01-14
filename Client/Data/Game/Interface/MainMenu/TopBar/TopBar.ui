@@ -1,0 +1,117 @@
+$Sounds = "../../Sounds.ui";
+
+@ButtonLabelStyle = LabelStyle(FontSize: 19, TextColor: #7c8b99, RenderUppercase: true, HorizontalAlignment: Center, VerticalAlignment: Center, FontName: "Default"); // FontName: "Secondary", // Changed to "Default" for Russian localization
+@ButtonLabelStyleSelected = LabelStyle(...@ButtonLabelStyle, TextColor: #ffffff);
+@ButtonSpacing = Anchor(Left: 0, Right: 0, Height: 24);
+@ButtonPadding = Padding(Horizontal: 23, Top: 6);
+
+@ButtonStyle = TextButtonStyle(
+  Default: (LabelStyle: @ButtonLabelStyle),
+  Pressed: (LabelStyle: (...@ButtonLabelStyle, TextColor: #ffffff)),
+  Hovered: (LabelStyle: (...@ButtonLabelStyle, TextColor: #bbcedf)),
+  Disabled: (LabelStyle: (...@ButtonLabelStyle, TextColor: #7c8b99(0.4))),
+  Sounds: $Sounds.@TopBar
+);
+
+@ButtonSelectedStyle = TextButtonStyle(
+  Default: (LabelStyle: (...@ButtonLabelStyleSelected), LabelMaskTexturePath: "../../Common/TextGradient.png"),
+  Hovered: (LabelStyle: (...@ButtonLabelStyleSelected), LabelMaskTexturePath: "../../Common/TextGradient.png"),
+  Pressed: (LabelStyle: (...@ButtonLabelStyleSelected), LabelMaskTexturePath: "../../Common/TextGradient.png")
+);
+
+Group #Panel {
+  Anchor: (Top: 0, Horizontal: 14, Height: 93);
+  Background: (TexturePath: "Background.png", HorizontalBorder: 74);
+
+  Group {
+    LayoutMode: Left;
+    Anchor: (Left: 0);
+
+    Group {
+      Anchor: (Width: 0);
+
+      Group #SelectedMarker {
+        Background: "NavigationItemSelected.png";
+        Anchor: (Width: 212, Height: 66, Top: 0, Left: 0);
+      }
+
+      Group #HoverMarker {
+        Background: "NavigationItemHovered.png";
+        Anchor: (Width: 212, Height: 66, Top: 0, Left: 0);
+        Visible: false;
+      }
+    }
+
+    Button #BackButton {
+      Anchor: (Left: 35, Top: 4, Width: 60, Height: 86, Right: 5);
+      Style: (
+        Default: (Background: "Logo.png"),
+        Hovered: (Background: "LogoHovered.png"),
+        Pressed: (Background: "LogoPressed.png"),
+        Sounds: (
+          MouseHover: (SoundPath: $Sounds.@HButtonHover, Volume: 6)
+        )
+      );
+    }
+
+    Group {
+      LayoutMode: Left;
+      Anchor: (Top: -6, Height: 74);
+      FlexWeight: 1;
+      Padding: (Right: 46);
+
+      TextButton #NavigationItemAdventure {
+        Text: " " + %client.mainMenu.navigation.worlds + " ";  // the space fixes an artifact with label masks
+        Anchor: (...@ButtonSpacing, Left: 0);
+        Padding: @ButtonPadding;
+        Style: @ButtonStyle;
+      }
+
+      TextButton #NavigationItemMinigames {
+        Text: " " + %client.mainMenu.navigation.minigames + " ";  // the space fixes an artifact with label masks
+        Anchor: @ButtonSpacing;
+        Padding: @ButtonPadding;
+        Style: @ButtonStyle;
+      }
+
+      TextButton #NavigationItemServers {
+        Text: " " + %client.mainMenu.navigation.servers + " ";  // the space fixes an artifact with label masks
+        Anchor: @ButtonSpacing;
+        Padding: @ButtonPadding;
+        Style: @ButtonStyle;
+      }
+
+      TextButton #NavigationItemAvatar {
+        Text: " " + %client.mainMenu.navigation.avatar + " ";  // the space fixes an artifact with label masks
+        Anchor: @ButtonSpacing;
+        Padding: @ButtonPadding;
+        Style: @ButtonStyle;
+      }
+
+      TextButton #NavigationItemSettings {
+        Text: " " + %client.mainMenu.navigation.settings + " ";  // the space fixes an artifact with label masks
+        Anchor: @ButtonSpacing;
+        Padding: @ButtonPadding;
+        Style: @ButtonStyle;
+      }
+
+      Group {
+        FlexWeight: 1;
+      }
+
+      TextButton #NavigationItemShop {
+        Text: " " + %client.mainMenu.navigation.shop + " ";  // the space fixes an artifact with label masks
+        Anchor: (...@ButtonSpacing, Right: 45);
+        Padding: @ButtonPadding;
+        Style: @ButtonStyle;
+      }
+
+      Group #SocialBarContainer {
+        Anchor: (Top: 10, Width: 320);
+        Padding: (Left: -33);
+
+        /* SocialBar component will be injected here as a child */
+      }
+    }
+  }
+}

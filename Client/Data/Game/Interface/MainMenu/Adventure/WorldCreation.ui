@@ -1,0 +1,304 @@
+$Common = "../../Common.ui";
+$Buttons = "../../Common/Buttons.ui";
+$MainMenuCommon = "../Common.ui";
+$Sounds = "../../Sounds.ui";
+
+@AdventureTileButtonStyle = ButtonStyle(
+  Default: (
+    Background: "GameModeTileDisabled.png"
+  ),
+  Hovered: (
+    Background: "GameModeTileHovered.png"
+  ),
+  Sounds: (
+    Activate: (SoundPath: "../../Sounds/WorldCreationTileActivate.ogg", Volume: 6),
+    MouseHover: (SoundPath: $Sounds.@ButtonsLightHover, Volume: 6)
+  )
+);
+
+@ExplorationTileButtonStyle = ButtonStyle(
+  Default: (
+    Background: "GameModeTile.png"
+  ),
+  Hovered: (
+    Background: "GameModeTileHovered.png"
+  ),
+  Sounds: (
+    Activate: (SoundPath: "../../Sounds/WorldCreationTileActivate.ogg", Volume: 6),
+    MouseHover: (SoundPath: $Sounds.@ButtonsLightHover, Volume: 6)
+  )
+);
+
+@CreativeTileButtonStyle = ButtonStyle(
+  Default: (
+    Background: "GameModeTile.png"
+  ),
+  Hovered: (
+    Background: "GameModeTileHovered.png"
+  ),
+  Sounds: (
+    Activate: (SoundPath: "../../Sounds/WorldCreationTileActivate.ogg", Volume: 6),
+    MouseHover: (SoundPath: $Sounds.@ButtonsLightHover, Volume: 6),
+    Context: (SoundPath: $Sounds.@ButtonsLightActivate, Volume: 6)
+  )
+);
+
+@AdventureTileButtonSelectedStyle = ButtonStyle(
+  Default: (
+    Background: "GameModeTileSelected.png"
+  )
+);
+
+@ExplorationTileButtonSelectedStyle = ButtonStyle(
+  Default: (
+    Background: "GameModeTileSelected.png"
+  )
+);
+
+@CreativeTileButtonSelectedStyle = ButtonStyle(
+  ...@AdventureTileButtonSelectedStyle,
+  Sounds: (
+    Context: (SoundPath: $Sounds.@ButtonsLightActivate, Volume: 6)
+  )
+);
+
+@AdventureIconPath = "GameModeTileAdventureIcon.png";
+@AdventureIconSelectedPath = "GameModeTileAdventureIconSelected.png";
+
+@JoinWorldSound = (SoundPath: $Sounds.@EnterWorldActivate, Volume: 6);
+
+Group #WorldCreation {
+  LayoutMode: Top;
+  Anchor: (Width: 1319);
+
+  $MainMenuCommon.@CenteredTitleLabel {
+    @Text = " " + %client.mainMenu.worlds.createWorld + " ";
+    Anchor: (Top: 186, Height: 46);
+  }
+
+  Group {
+    Anchor: (Height: 2, Top: 18);
+    Background: #a9bed8(0.12);
+  }
+
+  Group {
+    LayoutMode: Left;
+    Anchor: (Top: 44);
+
+    Button #AdventureTile {
+      Anchor: (Width: 431, Height: 485);
+      Disabled: true;
+
+      Group {
+        Background: "GameModeTileAdventureRunes.png";
+        Anchor: (Width: 415, Height: 69, Top: 7);
+      }
+
+      Group {
+        Background: "GameModeTileAdventureBackground.png";
+        Anchor: (Width: 427, Height: 310, Top: 39);
+      }
+
+      Group #Icon {
+        Background: "GameModeTileAdventureIconSelected.png";
+        Anchor: (Width: 60, Height: 70, Top: -13);
+      }
+
+      Group #Effect {
+        Background: "GameModeTileSelectedEffect.png";
+        Anchor: (Width: 106, Height: 210, Top: -100);
+      }
+
+      Label {
+        Text: %client.mainMenu.worldTypes.adventure;
+        Anchor: (Top: 290, Height: 45);
+        Style: (Alignment: Center, FontSize: 24, RenderBold: true, RenderUppercase: true, TextColor: #96a9be(0.4), FontName: "Default"); // FontName: "Secondary", // Changed to "Default" for Russian localization
+      }
+
+      Group {
+        Background: "GameModeTileTextSeparator.png";
+        Anchor: (Height: 1, Top: 290 + 45, Width: 405);
+      }
+
+      Group {
+        LayoutMode: Center;
+        Anchor: (Top: 290 + 45 + 5 + 18, Width: 385, Height: 64);
+
+        Group {
+          Anchor: (Width: 64, Height: 64, Top: -5);
+          Background: (TexturePath: "WIPIcon.png");
+        }
+      }
+
+      Group {
+        LayoutMode: Bottom;
+        Anchor: (Bottom: 30);
+
+        Label {
+          Text: %client.mainMenu.worlds.adventureMode.wip.text;
+          Style: (Alignment: Center, FontSize: 18, RenderItalics: false, TextColor: #4f5f72(0.8), Wrap: true);
+        }
+      }
+    }
+
+    Group {
+      FlexWeight: 1;
+    }
+
+    Button #ExplorationTile {
+      Anchor: (Width: 431, Height: 485);
+
+      Group {
+        Background: "GameModeTileAdventureRunes.png";
+        Anchor: (Width: 415, Height: 69, Top: 7);
+      }
+
+      Group {
+        Background: "GameModeTileExplorationBackground.png";
+        Anchor: (Width: 427, Height: 310, Top: 39);
+      }
+
+      Group #Icon {
+        Background: "GameModeTileExplorationIcon.png";
+        Anchor: (Width: 60, Height: 70, Top: -13);
+      }
+
+      Group #Effect {
+        Background: "GameModeTileSelectedEffect.png";
+        Anchor: (Width: 106, Height: 210, Top: -100);
+      }
+
+      Label {
+        Text: %client.mainMenu.worldTypes.exploration;
+        Anchor: (Top: 290, Height: 45);
+        Style: (Alignment: Center, FontSize: 24, RenderBold: true, RenderUppercase: true, TextColor: #96a9be, FontName: "Default"); // FontName: "Secondary", // Changed to "Default" for Russian localization
+      }
+
+      Group {
+        Background: "GameModeTileTextSeparator.png";
+        Anchor: (Height: 1, Top: 290 + 45, Width: 405);
+      }
+
+      Label {
+        Text: %client.mainMenu.worlds.explorationModeDescription;
+        Anchor: (Top: 290 + 45 + 10, Width: 385);
+        Style: (HorizontalAlignment: Center, FontSize: 18, TextColor: #96a9be, Wrap: true);
+      }
+
+      Group {
+        LayoutMode: Bottom;
+        Anchor: (Bottom: 30);
+
+        Label {
+          Text: %client.mainMenu.worlds.exploartionMode.wip.text;
+          Style: (Alignment: Center, FontSize: 18, RenderItalics: false, TextColor: #96a9be, Wrap: true);
+        }
+      }
+    }
+
+    Group {
+      FlexWeight: 1;
+    }
+
+    Button #CreativeTile {
+      Anchor: (Width: 431, Height: 485);
+
+      Group {
+        Background: "GameModeTileCreativeRunes.png";
+        Anchor: (Width: 415, Height: 69, Top: 7);
+      }
+
+      Group {
+        Background: "GameModeTileCreativeBackground.png";
+        Anchor: (Width: 427, Height: 310, Top: 39);
+      }
+
+      Group #Effect {
+        Background: "GameModeTileSelectedEffect.png";
+        Anchor: (Width: 106, Height: 210, Top: -100);
+      }
+
+      Group #Icon {
+        Background: "GameModeTileCreativeIcon.png";
+        Anchor: (Width: 60, Height: 70, Top: -13);
+      }
+
+      Label {
+        Text: %client.mainMenu.worldTypes.creative;
+        Anchor: (Top: 290, Height: 45);
+        Style: (Alignment: Center, FontSize: 24, RenderBold: true, RenderUppercase: true, TextColor: #96a9be, FontName: "Default"); // FontName: "Secondary", // Changed to "Default" for Russian localization
+      }
+
+      Group {
+        Background: "GameModeTileTextSeparator.png";
+        Anchor: (Height: 1, Top: 290 + 45, Width: 405);
+      }
+
+      Label #CreativeModeSettingsSummary {
+        Anchor: (Top: 290 + 45 + 10, Width: 385);
+        Style: (HorizontalAlignment: Center, FontSize: 18, TextColor: #96a9be, Wrap: true);
+      }
+    }
+  }
+
+  Group {
+    Anchor: (Height: 2, Top: 48);
+    Background: #a9bed8(0.12);
+  }
+
+  Group {
+    LayoutMode: Center;
+    Anchor: (Top: 25);
+
+    Label {
+      Text: %client.mainMenu.worlds.worldName;
+      Anchor: (Right: 15);
+      Style: (
+        VerticalAlignment: Center,
+        TextColor: #96a9be,
+        FontSize: 18,
+        RenderBold: true,
+        RenderUppercase: true
+      );
+    }
+
+    TextField #WorldNameInput {
+      Style: $Common.@DefaultInputFieldStyle;
+      PlaceholderStyle: $Common.@DefaultInputFieldPlaceholderStyle;
+      Background: $Common.@InputBoxBackground;
+      Anchor: (Height: $Common.@PrimaryButtonHeight, Width: 385);
+      Padding: (Horizontal: 14);
+      MaxLength: 32;
+    }
+
+    Group {
+      Anchor: (Horizontal: 8, Width: 3);
+      Background: #a9bed8(0.20);
+    }
+
+    Group #SettingsSelectorContainer {
+      LayoutMode: Center;
+
+      Button #SettingsButton {
+        Anchor: (Height: $Common.@PrimaryButtonHeight, MinWidth: 75);
+        Style: (
+          ...$Common.@SecondaryButtonStyle,
+          Sounds: $Sounds.@ButtonsLight
+        );
+        LayoutMode: Middle;
+
+        Group {
+          Anchor: (Width: 24, Height: 24);
+          Background: (TexturePath: "IconSettings.png");
+        }
+      }
+    }
+
+    $Common.@PrimaryTextButton #CreateWorldButton {
+      @Text = %client.mainMenu.worlds.createWorld;
+      @Anchor = (MinWidth: $Common.@DefaultButtonMinWidth);
+      @Sounds = (Activate: @JoinWorldSound);
+      Anchor: (Left: 8);
+    }
+  }
+}

@@ -1,0 +1,203 @@
+@Row = Group {
+  LayoutMode: Left;
+  Anchor: (Vertical: 4);
+};
+
+@RowHintContainer = Group {
+  LayoutMode: MiddleCenter;
+  Padding: (Horizontal: 6, Vertical: 8);
+  Anchor: (MinWidth: 48, Right: 10);
+  Background: (TexturePath: "../../../Common/InputBinding.png", Border: 6);
+};
+
+@RowHintTextStyle = LabelStyle(
+  RenderBold: true,
+  RenderUppercase: true,
+  FontName: "Default", // FontName: "Secondary", // Changed to "Default" for Russian localization
+  FontSize: 14,
+  TextColor: #ffffff(0.8),
+  OutlineColor: #000000(0)
+);
+
+@RowHintText = Label {
+  Style: @RowHintTextStyle;
+};
+
+@RowLabelContainer = Group {
+  FlexWeight: 1;
+  LayoutMode: Middle;
+  Anchor: (Top: 0);
+};
+
+@RowLabel = Label {
+  Style: (
+    FontSize: 14,
+    TextColor: #96a9be,
+    Wrap: true
+  );
+};
+
+@RowHintIconSize = 24;
+
+@RowHintIconMouseLeftClick = PatchStyle(TexturePath: "../../../Common/SmallInputIconMouseLeftClick.png");
+@RowHintIconMouseMiddleClick = PatchStyle(TexturePath: "../../../Common/SmallInputIconMouseMiddleClick.png");
+@RowHintIconMouseRightClick = PatchStyle(TexturePath: "../../../Common/SmallInputIconMouseRightClick.png");
+@RowHintIconKeyUp = PatchStyle(TexturePath: "../../../Common/InputIconKeyUp_White.png", Color: #ffffff(0.8));
+@RowHintIconKeyRight = PatchStyle(TexturePath: "../../../Common/InputIconKeyRight_White.png", Color: #ffffff(0.8));
+@RowHintIconKeyDown = PatchStyle(TexturePath: "../../../Common/InputIconKeyDown_White.png", Color: #ffffff(0.8));
+@RowHintIconKeyLeft = PatchStyle(TexturePath: "../../../Common/InputIconKeyLeft_White.png", Color: #ffffff(0.8));
+
+@Separator = Group {
+  Anchor: (Height: 2, Vertical: 10);
+  Background: #a27e39(0.27);
+};
+
+@SectionHeader = Label {
+  Style: (
+    FontSize: 15,
+    TextColor: #ffffff(0.95),
+    Wrap: false
+  );
+  Padding: (Top: 10, Bottom: 0);
+};
+
+@Legend = Group {
+  Background: (TexturePath: "LegendContainerPanelPatch.png", Border: 4);
+  LayoutMode: Top;
+  Anchor: (Left: 20, Top: 130, Width: 280, Height: 780);
+  Padding: (Full: 14);
+  Visible: true;
+
+  Group {
+    Anchor: (Bottom: 10);
+    LayoutMode: Left;
+
+    Group {
+      FlexWeight: 1;
+      LayoutMode: Left;
+
+      @RowHintContainer {
+        HotkeyLabel #ToggleLegendKey {
+          InputBindingKey: "L";
+        }
+      }
+    }
+
+    Label #Title {
+      Style: (
+        Alignment: Center,
+        FontSize: 16,
+        RenderBold: true,
+        RenderUppercase: true
+      );
+      Text: %client.builderTools.legend.title;
+    }
+
+    Group {
+      FlexWeight: 1;
+    }
+
+  }
+
+  Group #Pages {}
+
+  Group {
+    FlexWeight: 1;
+  }
+
+  Group {
+    LayoutMode: Center;
+
+    ActionButton #PreviousPage {
+      Disabled: true;
+      KeyBindingLabel: "J";
+    }
+
+    Label #PageCount {
+      Padding: (Horizontal: 10);
+      Style: (
+        Alignment: Center,
+        FontSize: 16,
+        RenderBold: true,
+        RenderUppercase: false
+      );
+      Text: "X / X";
+    }
+
+    ActionButton #NextPage {
+      Disabled: true;
+      KeyBindingLabel: "K";
+    }
+  }
+};
+
+@Page = Group {
+  @Title = "";
+  LayoutMode: Top;
+
+  Label #Subtitle {
+    Style: (
+      Alignment: Center,
+      FontSize: 16,
+      RenderBold: false,
+      RenderUppercase: false
+    );
+    Text: @Title;
+  }
+};
+
+@HotkeyRow = Group {
+  @InputBindingKey = "";
+  @InputBindingKeyPrefix = "";
+  @Description = "";
+  @LayoutMode = Middle; // or Top
+
+  @Row {
+    @RowHintContainer{
+      HotkeyLabel {
+        InputBindingKey: @InputBindingKey;
+        InputBindingKeyPrefix: @InputBindingKeyPrefix;
+      }
+    }
+
+    @RowLabelContainer {
+      LayoutMode: @LayoutMode;
+      @RowLabel {
+        Text: @Description;
+      }
+    }
+  }
+};
+
+@DoubleArrowKeyHotkeyRow = Group {
+  @IconOne = "";
+  @IconTwo = "";
+  @Text = "";
+  @InputBindingKeyPrefix = "";
+  @LayoutMode = Middle; // or Top
+
+  @Row {
+    @RowHintContainer {
+      LayoutMode: CenterMiddle;
+
+      HotkeyLabel {
+        InputBindingKey: @InputBindingKeyPrefix;
+      }
+      Group {
+        Anchor: (Width: @RowHintIconSize, Height: @RowHintIconSize);
+        Background: @IconOne;
+      }
+      Group {
+        Anchor: (Width: @RowHintIconSize, Height: @RowHintIconSize);
+        Background: @IconTwo;
+      }
+    }
+
+    @RowLabelContainer {
+      LayoutMode: @LayoutMode;
+      @RowLabel {
+        Text: @Text;
+      }
+    }
+  }
+};

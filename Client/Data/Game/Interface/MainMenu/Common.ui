@@ -1,0 +1,75 @@
+$Sounds = "../Sounds.ui";
+
+@OverlayColor = #0e1116(0.90);
+@OverlayBackground = PatchStyle(Color: @OverlayColor);
+
+@TitleLabelStyle = LabelStyle(
+  FontSize: 38,
+  FontName: "Default", // FontName: "Secondary", // Changed to "Default" for Russian localization
+  RenderBold: true,
+  TextColor: #e1a738ff,
+  RenderUppercase: true);
+
+@SubTitleLabelStyle = LabelStyle(
+  FontSize: 18,
+  RenderUppercase: true,
+  TextColor: #6c7886);
+
+@ContentWidth = 1820;
+@ContentSideSpacing = 30;
+
+@TitleLabel = Group {
+  LayoutMode: Left;
+
+  Label {
+    Style: (...@TitleLabelStyle, TextColor: #ffffff);
+    MaskTexturePath: "../Common/TextGradient.png";
+    Text: @Text;
+  }
+};
+
+@CenteredTitleLabel = Group {
+  LayoutMode: Center;
+
+  Label {
+    Style: (...@TitleLabelStyle, TextColor: #ffffff, HorizontalAlignment: Center);
+    MaskTexturePath: "../Common/TextGradient.png";
+    Text: @Text;
+  }
+};
+
+@DismissalSound = ();
+
+@OfflineOverlay = Group {
+  Visible: false;
+  HitTestVisible: true;
+  Background: #0a0c10(0.92);
+  LayoutMode: Middle;
+
+  Group {
+    LayoutMode: Top;
+    Anchor: (Width: @Width);
+
+    Label {
+      Text: @Title;
+      Style: (
+        HorizontalAlignment: Center,
+        TextColor: #d3dee3,
+        FontSize: 32,
+        RenderBold: true,
+        RenderUppercase: true
+      );
+    }
+
+    Label #DescriptionLabel {
+      Anchor: (Top: 20);
+      Text: @Description;
+      Style: (
+        HorizontalAlignment: Center,
+        TextColor: #6c7886,
+        FontSize: 18,
+        Wrap: true
+      );
+    }
+  }
+};

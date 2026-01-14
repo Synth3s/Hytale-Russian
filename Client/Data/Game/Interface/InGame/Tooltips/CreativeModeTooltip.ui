@@ -1,0 +1,32 @@
+@Width = 290;
+@ImageWidth = 250;
+@TextureBorder = 24;
+
+Group #Wrapper {
+  LayoutMode: Left;
+  Anchor: (Width: @Width, Left: 0, Top: -40);
+
+  Group #Group {
+    Background: (TexturePath: "ItemTooltipDefault.png", Border: @TextureBorder);
+    LayoutMode: Top;
+    Padding: (Full: 20);
+
+    Group #Image {
+      Background: (TexturePath: "../../MainMenu/Adventure/CreativeModeImage.png");
+      Anchor: (Width: @ImageWidth, Height: 140);
+    }
+
+    Label #Title {
+      Anchor: (Top: 14);
+      Text: %client.gamePageNavigation.buttons.ContentCreation.disabledTooltip.title;
+      Style: (FontName: "Default", FontSize: 16, RenderBold: true, RenderUppercase: true, TextColor: #ffffff, HorizontalAlignment: Center); // FontName: "Secondary", // Changed to "Default" for Russian localization
+    }
+
+    Label #Description {
+      Anchor: (Top: 10);
+      Padding: (Horizontal: 4);
+      Text: %client.gamePageNavigation.buttons.ContentCreation.disabledTooltip.description;
+      Style: (FontSize: 14, TextColor: #96a9be, Wrap: true, HorizontalAlignment: Center);
+    }
+  }
+}

@@ -4,8 +4,8 @@ $Buttons = "../Common/Buttons.ui";
 $SocialBar = "../Services/SocialBar.ui";
 $Sounds = "../Sounds.ui";
 
-@ButtonLabelStyle = LabelStyle(FontSize: 30, RenderBold: true, RenderUppercase: true, HorizontalAlignment: Start, VerticalAlignment: Center, FontName: "Default");
-@SecondaryButtonLabelStyle = LabelStyle(FontSize: 25, RenderBold: true, RenderUppercase: true, HorizontalAlignment: Start, VerticalAlignment: Center, FontName: "Default");
+@ButtonLabelStyle = LabelStyle(FontSize: 30, RenderBold: true, RenderUppercase: true, HorizontalAlignment: Start, VerticalAlignment: Center, FontName: "Default"); // FontName: "Secondary", // Changed to "Default" for Russian localization
+@SecondaryButtonLabelStyle = LabelStyle(FontSize: 25, RenderBold: true, RenderUppercase: true, HorizontalAlignment: Start, VerticalAlignment: Center, FontName: "Default"); // FontName: "Secondary", // Changed to "Default" for Russian localization
 
 @ButtonStyle = TextButtonStyle(
   Default: (LabelStyle: (...@ButtonLabelStyle, TextColor: #ffffffff), LabelMaskTexturePath: "HomeButtonLabelGradient.png"),
@@ -213,7 +213,7 @@ Group #EarlyAccessPanel {
 
       Label {
         Text: %client.mainMenu.earlyAccessPanel.title;
-        Style: (FontName: "Secondary", FontSize: 20, RenderBold: true, RenderUppercase: true, TextColor: #ffffff(0.85), HorizontalAlignment: Center);
+        Style: (FontName: "Default", FontSize: 20, RenderBold: true, RenderUppercase: true, TextColor: #ffffff(0.85), HorizontalAlignment: Center); // FontName: "Secondary", // Changed to "Default" for Russian localization
       }
     }
 

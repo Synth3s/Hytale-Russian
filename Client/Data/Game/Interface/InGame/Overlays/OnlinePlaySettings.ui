@@ -1,0 +1,154 @@
+$Common = "../../Common.ui";
+$SocialBar = "../../Services/SocialBar.ui";
+$Settings = "../../Common/Settings/Settings.ui";
+$Sounds = "../../Sounds.ui";
+
+Panel #OnlinePlayOverlay {
+  Background: #0e1219(0.95);
+
+  $Common.@BackButton {}
+
+  Group {
+    Anchor: (Top: 110, Bottom: 50);
+
+    Group {
+      Label {
+        Text: %client.mainMenu.onlinePlay.title;
+        Anchor: (Top: -60, Height: 53);
+        MaskTexturePath: "../../Common/TextGradient.png";
+        Style: (
+          HorizontalAlignment: Center,
+          FontSize: 46,
+          LetterSpacing: 1,
+          TextColor: #ffffff,
+          RenderUppercase: true,
+          FontName: "Default", // FontName: "Secondary", // Changed to "Default" for Russian localization
+          RenderBold: true
+        );
+      }
+
+      Group {
+        Anchor: (Top: 1, Height: 1, Width: $Settings.@Width);
+        Background: #a9bed8(0.15);
+      }
+    }
+
+    Group {
+      LayoutMode: Top;
+      Anchor: (Top: 50, Width: $Settings.@Width);
+
+      Group #OnlinePlayContainer {
+        LayoutMode: Top;
+      }
+
+      Label {
+        Anchor: (Bottom: 16, Top: 16);
+        Text: %client.mainMenu.onlinePlay.shareCode;
+        Style: (FontSize: 18, TextColor: #96a9be, RenderUppercase: true, RenderBold: true);
+      }
+
+      Group {
+        Anchor: (Bottom: 8);
+        LayoutMode: Top;
+        Padding: 16;
+        Background: (TexturePath: "../../Common/OptionBackgroundPatch.png", Border: 16);
+
+        Label #ShareCodeHintActive {
+          Style:(TextColor: #96a9be, RenderItalics: true, Wrap: true);
+          Anchor: (Bottom: 14);
+          Text: %client.mainMenu.onlinePlay.shareCode.hintActive;
+          Visible: false;
+        }
+
+        Label #ShareCodeIpWarning {
+          Style: (TextColor: #e66431, RenderBold: true, Wrap: true);
+          Anchor: (Bottom: 8);
+          Text: %client.mainMenu.onlinePlay.shareCode.ipWarning;
+        }
+
+        Label #ShareCodeHintInactive {
+          Style:(TextColor: #96a9be, RenderItalics: true, Wrap: true);
+          Anchor: (Bottom: 14);
+          Text: %client.mainMenu.onlinePlay.shareCode.hintInactive;
+        }
+
+        Group {
+          LayoutMode: Left;
+
+          TextField #ShareCodeInput {
+            Style: (...$Common.@DefaultInputFieldStyle, FontSize: 12);
+            PlaceholderStyle: $Common.@DefaultInputFieldPlaceholderStyle;
+            Background: $Common.@InputBoxBackground;
+            Anchor: (Height: 38, Width: 385, Right: 7);
+            Padding: (Horizontal: 10);
+            IsReadOnly: true;
+            PlaceholderText: %client.mainMenu.onlinePlay.shareCode.placeholder;
+            PasswordChar: "*";
+          }
+
+          $Common.@PrimaryTextButton #CopyShareCodeButton {
+            @Text = %client.mainMenu.onlinePlay.shareCode.copy;
+            Disabled: true;
+          }
+        }
+
+        Label #StatusLabel {
+          Anchor: (Top: 8);
+          Style: (FontSize: 14, TextColor: #7cb3f0, Wrap: true);
+          Visible: false;
+        }
+
+        Label #NatTypeLabel {
+          Style: (FontSize: 14, TextColor: #96a9be);
+          Visible: false;
+        }
+
+        Label #ConnectionWarningLabel {
+          Style: (FontSize: 14, TextColor: #e66431, RenderBold: true, Wrap: true);
+          Anchor: (Top: 8);
+          Visible: false;
+        }
+      }
+
+      Group {
+        Anchor: (Bottom: 8);
+        LayoutMode: Left;
+        Padding: (Horizontal: 16, Vertical: 6);
+        Background: (TexturePath: "../../Common/OptionBackgroundPatch.png", Border: 16);
+
+        Group {
+          Anchor: (Width: 64, Height: 64, Right: 16, Top: -3);
+          Background: "../../Common/WIPIcon.png";
+
+        }
+
+        Label #WIPWarningLabel {
+          Style: (FontSize: 14, TextColor: #96a9be, RenderBold: true, Wrap: true, VerticalAlignment: Center);
+          FlexWeight: 1;
+        }
+      }
+
+      Group {
+        Anchor: (Top: 30, Height: 2, Width: $Settings.@Width);
+        Background: #a9bed8(0.15);
+      }
+
+      Group {
+        LayoutMode: Right;
+        Anchor: (Top: 20);
+
+        $Common.@SecondaryTextButton #CancelButton {
+           @Text = %client.general.button.cancel;
+           @Anchor = (Width: 200);
+        }
+
+        Group { Anchor: (Width: 8); }
+
+        $Common.@PrimaryTextButton #SaveButton {
+          @Text = %client.general.button.save;
+          @Anchor = (Width: 200);
+        }
+      }
+    }
+  }
+}
