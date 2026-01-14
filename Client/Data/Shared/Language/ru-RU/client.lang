@@ -1872,11 +1872,11 @@ settings.placementPreview.all = Все
 settings.placementPreview.multipart = Составные
 
 # Интерфейс и HUD
-settings.displayCombatText = Числа урона
+settings.displayCombatText = Отображение урона
 settings.displayCombatText.description = Показывать урон над целями, если это разрешено сервером.
-settings.displayEntityStatBars = Полоски здоровья существ
+settings.displayEntityStatBars = Отображение здоровья существ
 settings.displayEntityStatBars.description = Показывать здоровье над головами существ, если разрешено сервером.
-settings.displayNetworkQualityWarnings = Предупреждения о качестве сети
+settings.displayNetworkQualityWarnings = Статус сетевого подключения
 settings.displayNetworkQualityWarnings.description = Показывать иконки проблем с соединением в HUD.
 settings.displayInputBindingsOnHud = Клавиши управления в HUD
 settings.displayInputBindingsOnHud.description = Показывать контекстные подсказки клавиш на экране.
