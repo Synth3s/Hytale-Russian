@@ -1866,7 +1866,10 @@ settings.renderScale = Масштаб рендеринга
 settings.renderScale.description = Процент от экранного разрешения, при котором рендерится игра.
 
 settings.placementPreview = Предпросмотр размещения блока
-settings.placementPreview.description = Для каких типов блоков отображать фантом перед установкой.\n<b><color is="#f1ba50">Нет</color></b>: Никогда не показывать.\n<b><color is="#f1ba50">Все</color></b>: Показывать для любого блока.\n<b><color is="#f1ba50">Составные</color></b>: Только для блоков больше одного куба.
+settings.placementPreview.description = Определяет, для каких типов блоков будет отображаться предпросмотр (когда блок находится в руке).\n
+<b><color is="#f1ba50">Нет</color></b>: Никогда не отображать.\n
+<b><color is="#f1ba50">Все</color></b>: Отображать предпросмотр для любого блока.\n
+<b><color is="#f1ba50">Составные</color></b>: Отображать предпросмотр только для объектов, размер которых превышает один блок.
 settings.placementPreview.none = Нет
 settings.placementPreview.all = Все
 settings.placementPreview.multipart = Составные
@@ -1877,18 +1880,24 @@ settings.displayCombatText.description = Показывать урон над ц
 settings.displayEntityStatBars = Отображение здоровья существ
 settings.displayEntityStatBars.description = Показывать здоровье над головами существ, если разрешено сервером.
 settings.displayNetworkQualityWarnings = Статус сетевого подключения
-settings.displayNetworkQualityWarnings.description = Показывать иконки проблем с соединением в HUD.
+settings.displayNetworkQualityWarnings.description = Отображать значки состояния сети.
 settings.displayInputBindingsOnHud = Клавиши управления в HUD
 settings.displayInputBindingsOnHud.description = Показывать контекстные подсказки клавиш на экране.
 settings.hideHud = Скрыть интерфейс (HUD)
+settings.hideHud.description = Скрыть все элементы интерфейса.
 settings.hideHotbar = Скрыть панель быстрого доступа
+settings.hideHotbar.description = Скрыть панель быстрого доступа и связанные с ней элементы.
 settings.hideCompass = Скрыть компас
+settings.hideCompass.description = Скрыть компас.
 settings.hideNotifications = Скрыть уведомления
+settings.hideNotifications.description = Скрыть всплывающие уведомления.
 settings.hideChat = Скрыть чат
+settings.hideChat.description = Скрыть окно чата (сообщения при этом продолжат отображаться).
 settings.hideHeldItem = Скрыть предмет в руке (от 1-го лица)
+settings.hideHeldItem.description = Скрыть предмет в руках игрока при игре от первого лица.
 settings.maxChatMessages = Макс. сообщений в чате
+settings.maxChatMessages.description = Определяет максимальное количество сообщений, которые будут отображаться в чате.
 
-# Полет и камера
 settings.cameraBasedFlying = Полет относительно камеры
 settings.cameraBasedFlying.description = <b>Вкл</b>: Движение следует за взглядом.\n<b>Выкл</b>: Направление движения не зависит от взгляда.
 settings.showToolNotifications = Уведомления инструментов
@@ -2030,7 +2039,8 @@ settings.bindings.DismountAction = Сесть / Слезть
 # Геймплейные механики
 settings.autoJumpObstacle = Авто-подъем
 settings.autoJumpObstacle.description = Автоматический шаг на блоки высотой до 1 единицы.
-settings.enableUtilityQuickSwap = Быстрая смена спецпредметов
+settings.enableUtilityQuickSwap = Быстрая смена инструментов
+settings.enableUtilityQuickSwap.description = Если включено, быстрое нажатие клавиши мгновенно переключит вас на следующий предмет в колесе инструментов.
 settings.enableArachnophobiaMode = Режим арахнофобии
 settings.enableArachnophobiaMode.description = Заменяет модели пауков (напр. на крабов).\n<b><color is="#b32626">Требует перезахода в главное меню!</color></b>
 settings.autoJumpGap = Авто-прыжок через ямы
@@ -2074,7 +2084,10 @@ settings.miscItemsPickupLocation = Разное
 settings.pickupLocation.hotbar = Быстрый доступ
 settings.pickupLocation.storage = Инвентарь
 
-# Поведение клавиш
+settings.cameraBasedClimbing = Карабканье относительно камеры settings.cameraBasedClimbing.description = Определяет поведение персонажа при карабканье.\n
+<b><color is="#f1ba50">Вкл</color></b>: При нажатии «Вперед» вы будете двигаться в направлении взгляда.\n
+<b><color is="#f1ba50">Выкл</color></b>: Вы двигаетесь согласно нажатым кнопкам.
+
 settings.crouchBehavior = Режим приседа
 settings.sprintBehavior = Режим спринта
 settings.walkBehavior = Режим шага
