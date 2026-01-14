@@ -1,0 +1,307 @@
+$Common = "../Common.ui";
+$Sounds = "../Sounds.ui";
+
+@SubtitleStyle = LabelStyle(FontSize: 15, RenderUppercase: true, TextColor: #96a9be);
+
+@Subtitle = Label {
+  Style: @SubtitleStyle;
+  Text: @Text;
+  Anchor: (Bottom: 10);
+};
+
+@TitleStyle = LabelStyle(
+  FontSize: 15,
+  VerticalAlignment: Center,
+  RenderUppercase: true,
+  TextColor: #b4c8c9,
+  FontName: "Default", // FontName: "Secondary", // Changed to "Default" for Russian localization
+  RenderBold: true,
+  LetterSpacing: 0
+);
+
+@Title = Label {
+  @Alignment = Center;
+  @Text = "";
+
+  Style: (
+    ...@TitleStyle,
+    HorizontalAlignment: @Alignment
+  );
+  Padding: (Horizontal: 19);
+  Text: @Text;
+};
+
+@TitleHeight = 38;
+@TitleOffset = 4;
+
+@ContentPaddingFull = 9 + 8;
+@ContentPadding = Padding(Full: @ContentPaddingFull, Top: 8);
+
+@IconOnlyTopTabAnchor = Anchor(Width: 82, Height: 62, Right: 5, Bottom: -14);
+@TextTopTabAnchor = Anchor(Height: 62, Right: 5, Bottom: -14);
+
+@IconOnlyTopTabStyle = TabStyleState(
+  Background: "Tab.png",
+  Overlay: "TabOverlay.png",
+  IconAnchor: (Width: 44, Height: 44),
+  LabelStyle: (FontSize: 19),
+  Anchor: @IconOnlyTopTabAnchor
+);
+
+@TextTopTabStyle = TabStyleState(
+  Background: (TexturePath: "Tab.png", Border: 3),
+  Overlay: "TabSelectedOverlay.png",
+  IconAnchor: (Width: 44, Height: 44),
+  LabelStyle: (FontSize: 19),
+  Padding: (Left: 20, Right: 20, Top: 14),
+  Anchor: @TextTopTabAnchor
+);
+
+@IconOnlyTopTabsStyle = TabNavigationStyle(
+  TabStyle: (
+    Default: @IconOnlyTopTabStyle,
+    Hovered: (...@IconOnlyTopTabStyle, Anchor: (...@IconOnlyTopTabAnchor, Bottom: -5)),
+    Pressed: (...@IconOnlyTopTabStyle, Anchor: (...@IconOnlyTopTabAnchor, Bottom: -8))
+  ),
+  SelectedTabStyle: (
+    Default: (
+      ...@IconOnlyTopTabStyle,
+      Anchor: (...@IconOnlyTopTabAnchor, Bottom: 0),
+      IconAnchor: (Width: 44, Height: 44),
+      Overlay: "TabSelectedOverlay.png"
+    )
+  ),
+  TabSounds: $Sounds.@DefaultTabNavigation
+);
+
+@TextTopTabsStyle = TabNavigationStyle(
+  TabStyle: (
+    Default: @TextTopTabStyle,
+    Hovered: (...@TextTopTabStyle, Anchor: (...@TextTopTabAnchor, Bottom: -5)),
+    Pressed: (...@TextTopTabStyle, Anchor: (...@TextTopTabAnchor, Bottom: -8))
+  ),
+  SelectedTabStyle: (
+    Default: (
+      ...@TextTopTabStyle,
+      Anchor: (...@TextTopTabAnchor, Bottom: 0),
+      IconAnchor: (Width: 44, Height: 44),
+      Overlay: "TabSelectedOverlay.png",
+      LabelStyle: (FontSize: 19, TextColor: #f0de7bff, RenderBold: true),
+    )
+  ),
+  TabSounds: $Sounds.@DefaultTabNavigation
+);
+
+@HeaderTabStyle = TabStyleState(
+  Anchor: (Width: 37, Height: 30, Left: 4),
+  IconAnchor: (Width: 22, Height: 22),
+  Padding: (Horizontal: 8),
+  TooltipStyle: $Common.@ButtonTextTooltipStyle,
+  IconOpacity: 0.4);
+
+@HeaderTabsStyle = TabNavigationStyle(
+  TabStyle: (
+    Default: @HeaderTabStyle,
+    Hovered: (...@HeaderTabStyle, IconOpacity: 0.6),
+    Pressed: (...@HeaderTabStyle, IconOpacity: 0.8)
+  ),
+  SelectedTabStyle: (
+    Default: (
+      ...@HeaderTabStyle,
+      IconOpacity: 1,
+      Background: (TexturePath: "HeaderTabSelectedBackground.png", Border: 7),
+      ContentMaskTexturePath: "SelectedIconGradient.png"
+    )
+  ),
+  TabSounds: (
+    Activate: (SoundPath: $Sounds.@CreativeTab, Volume: 6)
+  ));
+
+@ClearButtonStyle = (
+  Texture: (TexturePath: "ClearInputIcon.png", Color: #ffffff(0.3)),
+  HoveredTexture: (TexturePath: "ClearInputIcon.png", Color: #ffffff(0.5)),
+  PressedTexture: (TexturePath: "ClearInputIcon.png", Color: #ffffff(0.4)),
+  Width: 16,
+  Height: 16,
+  Side: Right,
+  Offset: 10
+);
+
+@HeaderSearch = Group {
+  @MarginRight = 10;
+
+  Anchor: (Width: 200);
+
+  CompactTextField #SearchField {
+    Anchor: (Height: 30, Right: @MarginRight);
+    CollapsedWidth: 34;
+    ExpandedWidth: 200;
+    PlaceholderText: %client.general.searchField.placeholder;
+    Style: (FontSize: 16);
+    PlaceholderStyle: (TextColor: #3d5a85, RenderUppercase: true, FontSize: 14);
+    Padding: (Horizontal: 12, Left: 34);
+    Decoration: (
+      Default: (
+        Icon: (Texture: "SearchIcon.png", Width: 16, Height: 16, Offset: 9),
+        ClearButtonStyle: @ClearButtonStyle
+      )
+    );
+    ExpandSound: (SoundPath: "../Sounds/SearchFieldExpand.ogg", Volume: 6);
+    CollapseSound: (
+      SoundPath: "../Sounds/SearchFieldCollapse.ogg",
+      Volume: 5
+    );
+  }
+};
+
+@HeaderTextButtonLabelStyle = (...@TitleStyle, VerticalAlignment: Center, TextColor: #d3d6db, FontName: "Default", RenderBold: true, LetterSpacing: 1);
+
+@HeaderTextButtonStyle = TextButtonStyle(
+  Default: (LabelStyle: @HeaderTextButtonLabelStyle),
+  Hovered: (LabelStyle: (...@HeaderTextButtonLabelStyle, TextColor: #eaebee)),
+  Pressed: (LabelStyle: (...@HeaderTextButtonLabelStyle, TextColor: #b6bbc2)),
+);
+
+@HeaderEndTextButton = TextButton {
+  @Sounds = ();
+  Style: (
+    ...@HeaderTextButtonStyle,
+    Sounds: (
+      Activate: (SoundPath: $Sounds.@Tick, Volume: 6),
+      MouseHover: (SoundPath: $Sounds.@ButtonsLightHover, Volume: 6)
+    )
+  );
+  Padding: (Right: 22, Left: 15, Bottom: 1);
+};
+
+@HeaderTextButton = TextButton {
+  @Sounds = ();
+  Style: (
+    ...@HeaderTextButtonStyle,
+    Sounds: (
+      Activate: (SoundPath: $Sounds.@Tick, Volume: 6),
+      MouseHover: (SoundPath: $Sounds.@ButtonsLightHover, Volume: 6)
+    )
+  );
+  Padding: (Horizontal: 12, Bottom: 1);
+};
+
+@HeaderSeparator = Group {
+  Anchor: (Width: 5, Height: 30);
+  Background: "HeaderTabSeparator.png";
+};
+
+@PanelTitle = Group {
+  @Alignment = Start;
+  @Text = "";
+
+  LayoutMode: Top;
+
+  Label #PanelTitle {
+    Style: (
+      RenderBold: true,
+      RenderUppercase: true,
+      VerticalAlignment: Center,
+      FontSize: 15,
+      TextColor: #cfd6e0,
+      FontName: "Default", // FontName: "Secondary", // Changed to "Default" for Russian localization
+      HorizontalAlignment: @Alignment,
+      LetterSpacing: 0
+    );
+    Anchor: (Height: 35, Horizontal: 8);
+    Text: @Text;
+  }
+
+  Group {
+    Background: #1b2533;
+    Anchor: (Height: 1);
+  }
+};
+
+@VerticalSeparator = Group {
+  Background: (TexturePath: "ContainerVerticalSeparator.png");
+  Anchor: (Width: 6, Top: -2);
+};
+
+@PanelSeparatorFancy = Group {
+  @Anchor = ();
+
+  LayoutMode: Left;
+  Anchor: (...@Anchor, Height: 8);
+
+  Group {
+    FlexWeight: 1;
+    Background: "ContainerPanelSeparatorFancyLine.png";
+  }
+
+  Group {
+    Anchor: (Width: 11);
+    Background: "ContainerPanelSeparatorFancyDecoration.png";
+  }
+
+  Group {
+    FlexWeight: 1;
+    Background: "ContainerPanelSeparatorFancyLine.png";
+  }
+};
+
+@InnerPaddingValue = 8;
+@FullPaddingValue = @InnerPaddingValue + 9;
+
+// TODO: If we're not going back to backgrounds with transparency simplify layout again
+
+@Container = Group {
+  @ContentPadding = Padding(Full: @FullPaddingValue);
+
+  Group #Title {
+    Anchor: (Height: @TitleHeight, Top: 0);
+    Padding: (Top: 7);
+    Background: (TexturePath: "ContainerHeaderNoRunes.png", HorizontalBorder: 35, VerticalBorder: 0);
+  }
+
+  Group #Content {
+    LayoutMode: Top;
+    Padding: @ContentPadding;
+    Anchor: (Top: @TitleHeight);
+    Background: (TexturePath: "ContainerPatch.png", Border: 23);
+  }
+};
+
+@DecoratedContainer = Group {
+  @ContentPadding = Padding(Full: 9 + 8);
+  @CloseButton = false;
+
+  Group #Title {
+    Anchor: (Height: @TitleHeight, Top: 0);
+    Background: (TexturePath: "ContainerHeader.png", HorizontalBorder: 50, VerticalBorder: 0);
+    Padding: (Top: 7);
+
+    Group #ContainerDecorationTop {
+      Anchor: (Width: 236, Height: 11, Top: -12);
+      Background: "ContainerDecorationTop.png";
+    }
+  }
+
+  Group #Content {
+    LayoutMode: Top;
+    Anchor: (Top: @TitleHeight);
+    Padding: @ContentPadding;
+    Background: (TexturePath: "ContainerPatch.png", Border: 23);
+  }
+
+  Group #ContainerDecorationBottom {
+    Anchor: (Width: 236, Height: 11, Bottom: -6);
+    Background: "ContainerDecorationBottom.png";
+  }
+
+  Button #CloseButton {
+    Anchor: (Width: 32, Height: 32, Top: -8, Right: -8);
+    Style: (
+      Default: (Background: "ContainerCloseButton.png"),
+      Hovered: (Background: "ContainerCloseButtonHovered.png"),
+      Pressed: (Background: "ContainerCloseButtonPressed.png"),
+      Sounds: $Sounds.@ButtonsDestructive
+    );
+    Visible: @CloseButton;
+  }
+};
