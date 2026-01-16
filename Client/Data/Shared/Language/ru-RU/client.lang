@@ -1061,7 +1061,7 @@ devTools.gameInfo.keys.NetworkReceived = Received
 disconnection.title.disconnected = Соединение с сервером разорвано
 disconnection.title.failedToConnect = Не удалось подключиться к серверу
 
-disconnection.button.quitToMainMenu = Выйти в главное меню
+disconnection.button.quitToMainMenu = В главное меню
 disconnection.button.reconnect = Переподключиться
 disconnection.button.reconnect.inProgress = Переподключение...
 
