@@ -27,7 +27,7 @@
 ### 2. Установка перевода
 1. **[Скачать русификатор](https://github.com/Synth3s/Hytale-Russian/releases/latest/download/Russian_Localization.zip)**.
 2. Перенесите содержимое скачанного архива в папку с игрой по пути:
-   `...\Hytale\install\release\package\game\latest\`
+`...\Hytale\install\release\package\game\latest\`
 3. Подтвердите замену всех файлов при запросе.
 
 ---
