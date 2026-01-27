@@ -233,6 +233,7 @@ assetEditor.errors.assetNotFound = Этот ассет не существует
 assetEditor.errors.unknownAssetType = Неизвестный тип ассета "{assetType}"
 assetEditor.errors.fileFormatNotSupported = Этот формат файлов не поддерживается
 assetEditor.errors.invalidJson = Некорректный JSON
+assetEditor.errors.invalidAssetType = Недопустимый тип ресурса
 assetEditor.errors.missingId = Пожалуйста, введите ID
 assetEditor.errors.failedExportErrors = Не удалось экспортировать ассеты: некоторые содержат ошибки валидации
 assetEditor.errors.failedToSetupAssetTypes = Не удалось настроить типы ассетов
@@ -765,6 +766,9 @@ builderTools.legend.SelectPrefabTool.Page1.TeleportToPrefab = Открыть м�
 builderTools.legend.SelectPrefabTool.Page1.SetAnchorTitle = Инструмент установки якоря:
 builderTools.legend.SelectPrefabTool.Page1.SetAnchorDescription = Используйте «Установку якоря» из инвентаря, чтобы изменить точку, за которую держится префаб при вставке.
 builderTools.legend.SelectPrefabTool.Page1.UsefulCommands = Полезные команды:\n/pedit kill — удаляет всех существ из префаба\n/pedit exit — выход без сохранения
+builderTools.legend.SelectPrefabTool.Page1.KillCommand = /pedit kill - Удаляет все сущности из выбранного префаба\n\
+/pedit exit - Выход из редактора префаба без сохранения изменений
+
 
 # === Работа с сущностями (Entity Tool) ===
 builderTools.tools.Paste.args.Origin.name = Привязка
@@ -1033,6 +1037,13 @@ disconnection.autoConnectingIn = Подключение через {seconds} с�
 
 disconnection.error.unexpectedError = Произошла непредвиденная ошибка
 disconnection.error.noConnectectionEstablished = Не удалось установить соединение
+disconnection.error.rateLimited = Слишком много попыток подключения. Пожалуйста, подождите немного и попробуйте снова.
+disconnection.error.authFailed = Ошибка аутентификации. Пожалуйста, перезапустите игру и попробуйте снова.
+disconnection.error.notAuthenticated = Для подключения к онлайн-серверам необходимо войти в аккаунт.
+disconnection.error.timeout = Время ожидания соединения истекло. Проверьте подключение к интернету и попробуйте снова.
+disconnection.error.versionMismatch = Не удалось подключиться из-за несовпадения версий клиента и сервера.
+disconnection.error.clientOutdated = Ваша версия игры устарела. Обновите игру, чтобы подключиться к этому серверу.
+disconnection.error.serverOutdated = Сервер использует более старую версию и не может принять ваше подключение.
 
 # === gameLoadingView (Загрузка игры) ===
 gameLoadingView.hints.constructionThanks = Спасибо за то, что играете, пока мы продолжаем улучшать игру!
@@ -1174,6 +1185,11 @@ inventory.character.tooltip.disabledMemories = Воспоминания недо
 inventory.character.tooltip.disabledBackpack = Рюкзак недоступен в этом контексте.
 inventory.character.tooltip.lockedMemories = Найдите Забытый Храм, чтобы узнать больше.
 inventory.character.tooltip.pocketCraftingDisabled = Карманный крафт недоступен в этом контексте.
+inventory.character.tooltip.toggleHelmVisibility = Показать/скрыть шлем
+inventory.character.tooltip.toggleCuirassVisibility = Показать/скрыть кирасу
+inventory.character.tooltip.toggleGauntletsVisibility = Показать/скрыть перчатки
+inventory.character.tooltip.togglePantsVisibility = Показать/скрыть штаны
+
 
 # Характеристики
 inventory.character.stats.mana = Мана
@@ -1203,6 +1219,9 @@ inventory.bench.tierLevelX.requirements = Требования для {level}-г
 inventory.bench.tierLevelX.upgrade = Улучшить до {level}-го уровня
 inventory.bench.tier.button.upgrade = Улучшить
 inventory.bench.tier.max = ДОСТИГНУТ МАКС. УРОВЕНЬ
+inventory.bench.chestInfo = [ВРЕМ] Верстаки могут подключаться к сундукам в радиусе {horizontalRadius, number}/{verticalRadius, number}. К одной станции можно привязать не более {maxChests, number} сундуков.
+inventory.bench.chestLimitReached = [ВРЕМ] Этот верстак достиг максимального лимита подключённых сундуков
+
 
 inventory.crafting.ingredient.tooltip.pullingFromChests = В инвентаре недостаточно ингредиентов. Используются предметы из ближайших сундуков.
 
@@ -1470,7 +1489,7 @@ mainMenu.servers.editPopup.name = Название
 mainMenu.servers.editPopup.error.invalidAddress = Пожалуйста, введите корректный адрес сервера
 mainMenu.servers.editPopup.error.invalidName = Пожалуйста, введите корректное название сервера
 
-mmainMenu.servers.name = Название
+mainMenu.servers.name = Название
 mainMenu.servers.description = Описание
 mainMenu.servers.online = Игроков
 mainMenu.servers.tags = Теги
@@ -1593,6 +1612,10 @@ map.playerList.worldOnly = Только в мире
 map.playerList.titleWorld = Игроки в мире
 map.playerList.titleServer = Игроки на сервере
 map.playerList.inWorld = Этот игрок в вашем мире
+
+map.playerListEntry.tooltip.compass = Отслеживать на компасе
+map.playerListEntry.tooltip.map = Показать на карте
+
 
 map.marker.localPlayer = Вы
 map.marker.targetLocation = Целевая локация
@@ -1738,6 +1761,7 @@ settings.groups.controls.blockPlacement = Размещение блоков
 settings.groups.controls.builderTools = Инструменты строителя
 settings.groups.controls.misc = Разное
 settings.groups.controls.debug = Отладка
+settings.groups.controls.inventory = Инвентарь
 settings.groups.builderTools = Инструменты строителя
 settings.groups.movement = Движение
 settings.groups.mantling = Паркур (Mantling)
@@ -1858,6 +1882,7 @@ settings.placeBlocksAtRange = Размещать блоки на расстоя�
 settings.placeBlocksAtRangeInAdventureMode = ---> Вне творческого режима
 settings.blockPlacementSupportValidation = Проверка опоры при размещении блоков
 settings.blockPlacementFluidity = Плавность размещения в творчестве
+settings.resetMouseSensitivityDuration = Задержка возврата чувствительности мыши
 
 # Рендеринг
 settings.automaticRenderScale = Автоматическое масштабирование рендеринга
@@ -1895,6 +1920,12 @@ settings.hideChat = Скрыть чат
 settings.hideChat.description = Скрыть окно чата (сообщения при этом продолжат отображаться).
 settings.hideHeldItem = Скрыть предмет в руке (от 1-го лица)
 settings.hideHeldItem.description = Скрыть предмет в руках игрока при игре от первого лица.
+settings.showFpsOverlay = Отображение FPS
+settings.showFpsOverlay.description = Постоянно отображает счётчик кадров в секунду в правом верхнем углу экрана.
+settings.showFpsOverlay.off = Выкл.
+settings.showFpsOverlay.colorCoded = Вкл. (цветной)
+settings.showFpsOverlay.monochrome = Вкл. (монохромный)
+
 settings.maxChatMessages = Макс. сообщений в чате
 settings.maxChatMessages.description = Определяет максимальное количество сообщений, которые будут отображаться в чате.
 
@@ -1972,6 +2003,10 @@ settings.joinCameraPref.lastUsed = Как в прошлый раз
 
 settings.diagnosticMode = Диагностический режим
 settings.diagnosticMode.description = Выводит расширенные сообщения об ошибках контента. Рекомендуется для создателей модов.
+
+settings.useBlockyModelShaderWorkaround = Исправление отображения моделей
+settings.useBlockyModelShaderWorkaround.description = На некоторых компьютерах Mac с видеокартами NVIDIA без этого параметра модели отображаются очень медленно. Для применения изменений требуется перезапуск игры.
+
 
 # Управление и Мышь
 settings.mouseRawInputMode = Прямой ввод (Raw Input)
@@ -2085,46 +2120,114 @@ settings.bindings.ToggleFlyCameraControlTarget.description = Переключа�
 settings.bindings.PreviousBuilderToolsLegendPage = Подсказки: Пред. страница
 settings.bindings.NextBuilderToolsLegendPage = Подсказки: След. страница
 
+settings.bindings.ContainerTakeAll = Контейнер: Забрать всё
+settings.bindings.ContainerPutAll = Контейнер: Положить всё
+settings.bindings.ContainerQuickStack = Контейнер: Быстрая сортировка
+settings.bindings.ContainerSort = Контейнер: Сортировать предметы
+
+
 # Геймплейные механики
 settings.autoJumpObstacle = Авто-подъем
 settings.autoJumpObstacle.description = Автоматический шаг на блоки высотой до 1 единицы.
+settings.autoCrouchDownObstacle = Автоматический спуск при приседании
+settings.autoCrouchDownObstacle.description = Если включено, при приседании персонаж автоматически будет спускаться с блоков высотой до 1 единицы
 settings.enableUtilityQuickSwap = Быстрая смена инструментов
 settings.enableUtilityQuickSwap.description = Если включено, быстрое нажатие клавиши мгновенно переключит вас на следующий предмет в колесе инструментов.
 settings.enableArachnophobiaMode = Режим арахнофобии
 settings.enableArachnophobiaMode.description = Заменяет модели пауков (напр. на крабов).\n<b><color is="#b32626">Требует перезахода в главное меню!</color></b>
+settings.enableOphidiophobiaMode = Режим офидиофобии
+settings.enableOphidiophobiaMode.description = Если включено, змеи будут заменены другой моделью (по умолчанию — червём).\n\n<b><color is="#b32626">Чтобы настройка вступила в силу, необходимо вернуться в главное меню!</color></b>
 settings.autoJumpGap = Авто-прыжок через ямы
 settings.builderMode = Режим строителя
 settings.builderMode.tooltip = В творческом режиме отключает эффекты падения, покачивание камеры и т.д.
 
-# Паркур и передвижение
-settings.mantling = Паркур (Mantling)
-settings.minVelocityMantling = Мин. вертик. скорость для паркура
-settings.maxVelocityMantling = Макс. вертик. скорость для паркура
-settings.jumpForceSpeedMultiplierStep = Прирост силы прыжка за уровень скорости
-settings.maxJumpForceSpeedMultiplier = Макс. доп. сила прыжка
+settings.mantling = Включить/выключить подтягивание
+settings.minVelocityMantling = Минимальная вертикальная скорость для подтягивания
+settings.maxVelocityMantling = Максимальная вертикальная скорость для подтягивания
+settings.jumpForceSpeedMultiplierStep = Прирост силы прыжка за каждый уровень скорости
+settings.maxJumpForceSpeedMultiplier = Максимальное увеличение силы прыжка
+settings.mantlingCameraOffsetY = Смещение камеры по Y при подтягивании
+settings.mantleBlockHeight = Высота блока для подтягивания
 
-settings.sprintForce = Сила спринта
-settings.sprintAccelerationDuration = Длительность ускорения
-settings.sprintDecelerationDuration = Длительность замедления
+settings.sprintForce = Сила рывка
+settings.sprintAccelerationDuration = Длительность разгона
+settings.sprintDecelerationDuration = Длительность торможения
+settings.sprintAccelerationEasingType = Тип кривой разгона
+settings.sprintDecelerationEasingType = Тип кривой торможения
+
+settings.slideDecelerationEasingType = Тип кривой торможения
+settings.slideDecelerationDuration = Длительность торможения
+
 
 # Характеристики и Оружие
 settings.staminaLowAlertPercent = Порог предупреждения о выносливости
 settings.staminaDebugInfo = Отладка выносливости
 settings.weaponPullback = Замах оружием
-settings.overrideFirstPersonAnimations = Замена анимаций от первого лица
+settings.itemAnimationsClipGeometry = Обрезка геометрии в анимациях предметов (для каждой анимации)
+settings.itemsClipGeometry = Обрезка геометрии предметов (для каждого предмета)
+settings.overrideFirstPersonAnimations = Использовать альтернативные анимации от первого лица
+
+settings.showEntityMarkers = Показывать маркеры сущностей
+
+settings.entityUIMaxEntities = Максимум сущностей
+settings.entityUIMaxDistance = Максимальная дистанция
+settings.entityUIHideDelay = Задержка скрытия
+settings.entityUIFadeInDuration = Длительность появления
+settings.entityUIFadeOutDuration = Длительность исчезновения
+
 
 # Ездовые животные (Mounts)
-settings.mountMinTurnRate = Мин. скорость поворота
-settings.mountMaxTurnRate = Макс. скорость поворота
-settings.mountSpeedMinTurnRate = Порог скорости для мин. поворота
-settings.mountForwardsAccelerationDuration = Разгон до макс. скорости (вперед)
-settings.mountBackwardsAccelerationDuration = Разгон до макс. скорости (назад)
-settings.mountForcedAccelerationMultiplierSetting = Множитель форсированного разгона
-settings.mountRequireNewInput = Повторное нажатие после торможения
+settings.mountMinTurnRate = Минимальная скорость поворота
+settings.mountMinTurnRate.tooltip = Самая медленная скорость поворота маунта (в градусах в секунду)
+
+settings.mountMaxTurnRate = Максимальная скорость поворота
+settings.mountMaxTurnRate.tooltip = Самая быстрая скорость поворота маунта (в градусах в секунду)
+
+settings.mountSpeedMinTurnRate = Скорость для медленного поворота
+settings.mountSpeedMinTurnRate.tooltip = Начиная с этой скорости маунт будет поворачивать медленнее (чем выше скорость - тем медленнее поворот)
+
+settings.mountSpeedMaxTurnRate = Скорость для быстрого поворота
+settings.mountSpeedMaxTurnRate.tooltip = До этой скорости маунт будет поворачивать быстрее (чем выше скорость - тем медленнее поворот)
+
+settings.mountForwardsAccelerationEasingType = Тип кривой ускорения вперёд
+settings.mountForwardsAccelerationEasingType.tooltip = Кривая сглаживания, используемая для ускорения при движении вперёд
+
+settings.mountForwardsDecelerationEasingType = Тип кривой торможения вперёд
+settings.mountForwardsDecelerationEasingType.tooltip = Кривая сглаживания, используемая для замедления при движении вперёд
+
+settings.mountBackwardsAccelerationEasingType = Тип кривой ускорения назад
+settings.mountBackwardsAccelerationEasingType.tooltip = Кривая сглаживания, используемая для ускорения при движении назад
+
+settings.mountBackwardsDecelerationEasingType = Тип кривой торможения назад
+settings.mountBackwardsDecelerationEasingType.tooltip = Кривая сглаживания, используемая для замедления при движении назад
+
+settings.mountForwardsAccelerationDuration = Длительность ускорения вперёд
+settings.mountForwardsAccelerationDuration.tooltip = Время, необходимое для достижения максимальной скорости при движении вперёд
+
+settings.mountForwardsDecelerationDuration = Длительность замедления вперёд
+settings.mountForwardsDecelerationDuration.tooltip = Время, необходимое для перехода в состояние покоя после движения вперёд
+
+settings.mountBackwardsAccelerationDuration = Длительность ускорения назад
+settings.mountBackwardsAccelerationDuration.tooltip = Время, необходимое для достижения максимальной скорости при движении назад
+
+settings.mountBackwardsDecelerationDuration = Длительность замедления назад
+settings.mountBackwardsDecelerationDuration.tooltip = Время, необходимое для перехода в состояние покоя после движения назад
+
+settings.mountForcedAccelerationMultiplierSetting = Множитель принудительного ускорения
+settings.mountForcedAccelerationMultiplierSetting.tooltip = Множитель, используемый для уменьшения времени ускорения при нажатии спринта во время движения
+
+settings.mountForcedDecelerationMultiplierSetting = Множитель принудительного торможения
+settings.mountForcedDecelerationMultiplierSetting.tooltip = Множитель, используемый для уменьшения времени замедления при нажатии противоположного направления движения
+
+settings.mountRequireNewInput = Требовать новый ввод после принудительного торможения
+settings.mountRequireNewInput.tooltip = Нужно ли отпускать и заново нажимать клавиши движения, чтобы продолжить движение после принудительного торможения
+
+settings.displayTempPrefix = Показывать теги [ВРЕМ] в тексте
+
 
 # Настройки подбора предметов
 settings.armorItemsPickupLocation = Броня
-settings.weaponAndToolItemsPickupLocation.description = Определяет приоритетное место для хранения предметов при подборе.\n\
+settings.armorItemsPickupLocation.description = Определяет приоритетное место для хранения предметов при подборе.\n\
 <b><color is="#f1ba50">Панель быстрого доступа</color></b>: Новые предметы сначала попадают на панель, а при её заполнении — в инвентарь.\n\
 <b><color is="#f1ba50">Инвентарь</color></b>: Новые предметы сначала попадают в инвентарь, а при его заполнении — на панель быстрого доступа.
 
@@ -2231,3 +2334,95 @@ feedback.success.bugreport = Ваш отчет об ошибке успешно 
 feedback.success.submitMore = Отправить еще
 
 bugReportButton.tooltip = Сообщить об ошибке или оставить отзыв
+
+patchline.launchNotification.title = Предрелизная ветка обновлений
+patchline.launchNotification.text = Вы используете предрелизную версию Hytale.\n\n\
+    Эта версия может содержать экспериментальные функции и ошибки.\n\n\
+    Ваши отзывы помогают нам улучшать игру!
+
+patchline.worldWarning.title = Предупреждение о версии
+patchline.worldWarning.text = Вы собираетесь открыть мир, используя другую версию игры.\n\n\
+    Открытие этого мира может внести изменения, которые повлияют на сохранение.\n\n\
+    Рекомендуем создать резервную копию перед продолжением.
+patchline.worldWarning.openAnyway = Все равно открыть
+patchline.worldWarning.duplicateWorld = Создать копию мира
+
+# === cosmetics ===
+cosmetics.color.skinTone = Тон
+
+# Hair Gradients
+cosmetics.color.PitchBlack = Иссиня-чёрный
+cosmetics.color.Black = Чёрный
+cosmetics.color.BrownDarker = Очень тёмно-коричневый
+cosmetics.color.BrownDark = Тёмно-коричневый
+cosmetics.color.BrownSemiDark = Полутёмно-коричневый
+cosmetics.color.Brown = Коричневый
+cosmetics.color.BrownSemiLight = Полусветло-коричневый
+cosmetics.color.BrownLight = Светло-коричневый
+cosmetics.color.Blond = Блонд
+cosmetics.color.BlondPlatinum = Платиновый блонд
+cosmetics.color.BlondSand = Песочный блонд
+cosmetics.color.BlondCaramel = Карамельный блонд
+cosmetics.color.Copper = Медный
+cosmetics.color.Red = Рыжий
+cosmetics.color.RedDark = Тёмно-рыжий
+cosmetics.color.Pink = Розовый
+cosmetics.color.PinkBerry = Ягодно-розовый
+cosmetics.color.Bubblegum = Жвачечно-розовый
+cosmetics.color.Purple = Фиолетовый
+cosmetics.color.Lavender = Лавандовый
+cosmetics.color.BlueDark = Тёмно-синий
+cosmetics.color.Blue = Синий
+cosmetics.color.BlueLight = Светло-синий
+cosmetics.color.Turquoise = Бирюзовый
+cosmetics.color.Green = Зелёный
+cosmetics.color.White = Белый
+cosmetics.color.GreyAsh = Пепельно-серый
+cosmetics.color.Grey = Серый
+cosmetics.color.GreyPurple = Серо-фиолетовый
+cosmetics.color.Blue_Anthracite = Антрацитово-синий
+
+# Shiny_Fabric Gradients
+cosmetics.color.Lime = Лаймовый
+cosmetics.color.Orange = Оранжевый
+cosmetics.color.Yellow = Жёлтый
+cosmetics.color.Violet = Фиолетовый
+
+# Jean_Generic Gradients
+cosmetics.color.BluePastel = Пастельно-синий
+cosmetics.color.GreyDark = Тёмно-серый
+cosmetics.color.GreyLight = Светло-серый
+cosmetics.color.GreyBlue = Сине-серый
+cosmetics.color.Marine_Blue = Морской синий
+cosmetics.color.Maroon = Бордовый
+cosmetics.color.Blue_Night = Ночно-синий
+cosmetics.color.Turquoise_Dark = Тёмно-бирюзовый
+
+# Faded_Leather Gradients
+cosmetics.color.Orange_Tan = Рыже-коричневый
+
+# Flashy_Synthetic Gradients
+cosmetics.color.OrangePastel = Пастельно-оранжевый
+cosmetics.color.PinkPastel = Пастельно-розовый
+
+# Colored_Cotton Gradients
+cosmetics.color.Cream = Кремовый
+cosmetics.color.Charcoal = Угольно-серый
+
+# Pastel_Cotton Gradients
+cosmetics.color.Carmin = Карминовый
+cosmetics.color.PurplePastel = Пастельно-фиолетовый
+
+# Fantasy_Cotton Gradients
+cosmetics.color.Beige = Бежевый
+
+# Eyes Gradients
+cosmetics.color.Honey = Медовый
+cosmetics.color.GreenLight = Светло-зелёный
+
+# Ornamented_Metal Gradients
+cosmetics.color.Gold_Red = Золотой
+cosmetics.color.Silver_Blue = Серебряный
+cosmetics.color.Copper_Green = Медный
+cosmetics.color.Brass_Purple = Латунный
+cosmetics.color.Iron_Black = Железный
