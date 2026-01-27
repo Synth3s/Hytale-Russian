@@ -329,7 +329,6 @@ builderTools.tools.Paint.args.xMaterialTopFluid.description = Декорации
 builderTools.tools.Paint.args.xMaterialTopFluidDensity.name = Плотность
 
 builderTools.tools.Path.name = Кисть тропинок
-builderTools.tools.Path.name = Кисть дороги
 builderTools.tools.Path.description = Создаёт дорожки на поверхности
 
 builderTools.tools.Paint.args.aaaClearObstacles.name = Удалять препятствия
