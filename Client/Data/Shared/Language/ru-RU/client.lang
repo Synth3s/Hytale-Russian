@@ -1616,7 +1616,6 @@ map.playerList.inWorld = Этот игрок в вашем мире
 map.playerListEntry.tooltip.compass = Отслеживать на компасе
 map.playerListEntry.tooltip.map = Показать на карте
 
-
 map.marker.localPlayer = Вы
 map.marker.targetLocation = Целевая локация
 # === mediaBrowser ===

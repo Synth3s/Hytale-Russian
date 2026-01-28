@@ -1,5 +1,4 @@
 # === assetEditor ===
-
 assetEditor.messages.unknownItem = Неизвестный предмет «{id}»
 assetEditor.messages.unknownModel = Неизвестная модель «{id}»
 assetEditor.messages.failedToDecodeAsset = Не удалось декодировать ресурс: {message}
