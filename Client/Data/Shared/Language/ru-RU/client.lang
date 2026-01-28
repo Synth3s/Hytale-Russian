@@ -1633,7 +1633,7 @@ mediaBrowser.youtube.errors.requestFailed = Не удалось получить
 # === menuOverlay (Меню паузы) ===
 menuOverlay.buttons.returnToGame = Вернуться в игру
 menuOverlay.buttons.quitToDesktop = Выйти на рабочий стол
-menuOverlay.buttons.quitToMainMenu = Выйти в главное меню
+menuOverlay.buttons.quitToMainMenu = В главное меню
 menuOverlay.buttons.codex = Кодекс
 menuOverlay.buttons.settings = Настройки
 menuOverlay.buttons.feedback = Сообщить об ошибке или оставить отзыв
